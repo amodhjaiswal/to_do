@@ -6,10 +6,7 @@ phases:
       - echo "Installing source NPM dependencies..."
       - npm install
 
-  build:
-    commands:
-      - echo "Building the project..."
-      - npm run build
+
 
 artifacts:
   files:
