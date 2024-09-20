@@ -1,7 +1,7 @@
 version: 0.2
 
 phases:
-  install_dependencies:
+  install:
     commands:
       - echo "Installing source NPM dependencies..."
       - npm install
