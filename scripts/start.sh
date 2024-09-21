@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /home/ubuntu/to-do
+pwd
 npm start
