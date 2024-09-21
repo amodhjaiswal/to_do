@@ -11,11 +11,7 @@ fi
 # Navigate to the directory
 cd "$TARGET_DIR" || { echo "Failed to change directory to $TARGET_DIR"; exit 1; }
 
-# Check if package.json exists
-if [ ! -f "package.json" ]; then
-    echo "Error: package.json not found in $TARGET_DIR"
-    exit 1
-fi
+
 
 # Run npm install or any other npm command
 npm install
