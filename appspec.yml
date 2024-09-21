@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/to-do  # Change this to your desired path
+    destination: /home/ubuntu  # Change this to your desired path
 
 hooks:
   BeforeInstall:
