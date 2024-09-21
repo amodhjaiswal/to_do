@@ -1,3 +1,4 @@
 #!/bin/bash
-cd /home/ubuntu
+cd /home/ubuntu/to-do
+npm install
 npm start
