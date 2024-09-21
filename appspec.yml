@@ -8,4 +8,4 @@ hooks:
   BeforeInstall:
     - location: scripts/start.sh # Name of your script file
       timeout: 300
-      runas: ubuntu  # Change if necessary based on your EC2 instance user
+      runas: root  # Change if necessary based on your EC2 instance user
