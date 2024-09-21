@@ -8,11 +8,6 @@ fi
 # Navigate to the directory
 cd /home/ubuntu/to-do
 
-# Check if package.json exists
-if [ ! -f "package.json" ]; then
-    echo "Error: package.json not found in /home/ubuntu/to-do"
-    exit 1
-fi
 
 # Run npm install or any other npm command
 npm install
