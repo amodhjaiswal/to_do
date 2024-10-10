@@ -8,6 +8,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 288761769499.dkr.ecr.ap-south-1.amazonaws.com
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
       - echo Building the Docker image...
@@ -18,7 +20,7 @@ phases:
       - docker tag to-do-ecr:latest 288761769499.dkr.ecr.ap-south-1.amazonaws.com/to-do-ecr:latest
       - echo Pushing the Docker image to ECR...
       - docker push 288761769499.dkr.ecr.ap-south-1.amazonaws.com/to-do-ecr:latest
-
+      - docker push 288761769499.dkr.ecr.ap-south-1.amazonaws.com/to-do-ecr:$IMAGE_TAG
+      - printf '[{"name":"exp-code-pipeline","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
-  files:
-    - '**/*'
+  files: imagedefinitions.json
