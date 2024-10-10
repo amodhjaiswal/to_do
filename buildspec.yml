@@ -21,7 +21,7 @@ phases:
       - docker push 288761769499.dkr.ecr.ap-south-1.amazonaws.com/to-do-ecr:latest
       - echo Docker image pushed to ECR successfully!
       - echo Updating ECS service...
-      - aws ecs update-service --cluster my-cluster --service my-service --force-new-deployment --image-definitions imagedefinitions.json
+    
 
 artifacts:
   files:
