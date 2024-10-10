@@ -2,11 +2,22 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      docker: 20
+  pre_build:
     commands:
-      - echo "Installing source NPM dependencies..."
-      - npm install
-
-
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 288761769499.dkr.ecr.ap-south-1.amazonaws.com
+  build:
+    commands:
+      - echo Building the Docker image...
+      - docker build -t to-do-ecr .
+  post_build:
+    commands:
+      - echo Tagging the Docker image...
+      - docker tag to-do-ecr:latest 288761769499.dkr.ecr.ap-south-1.amazonaws.com/to-do-ecr:latest
+      - echo Pushing the Docker image to ECR...
+      - docker push 288761769499.dkr.ecr.ap-south-1.amazonaws.com/to-do-ecr:latest
 
 artifacts:
   files:
